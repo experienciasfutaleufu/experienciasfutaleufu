@@ -1,33 +1,90 @@
 import { defineConfig } from "tinacms";
-import page from "./collections/page";
-import post from "./collections/post";
 
-export const config = defineConfig({
+// Your hosting provider likely exposes this as an environment variable
+const branch =
+  process.env.GITHUB_BRANCH ||
+  process.env.VERCEL_GIT_COMMIT_REF ||
+  process.env.HEAD ||
+  "main";
+
+export default defineConfig({
+  branch,
+
+  // Get this from tina.io
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-  branch:
-    process.env.NEXT_PUBLIC_TINA_BRANCH || // custom branch env override
-    process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || // Vercel branch env
-    process.env.HEAD, // Netlify branch env
+  // Get this from tina.io
   token: process.env.TINA_TOKEN,
+
+  build: {
+    outputFolder: "admin",
+    publicFolder: "public",
+  },
   media: {
-    // If you wanted cloudinary do this
-    // loadCustomStore: async () => {
-    //   const pack = await import("next-tinacms-cloudinary");
-    //   return pack.TinaCloudCloudinaryMediaStore;
-    // },
-    // this is the config for the tina cloud media store
     tina: {
+      mediaRoot: "",
       publicFolder: "public",
-      mediaRoot: "uploads",
     },
   },
-  build: {
-    publicFolder: "public", // The public asset folder for your framework
-    outputFolder: "admin", // within the public folder
-  },
   schema: {
-    collections: [page, post],
+    collections: [
+      {
+        label: "Page Content",
+        name: "page",
+        path: "content/page",
+        format: "mdx",
+        fields: [
+          {
+            type: "image",
+            label: "Landing  Daytime Image",
+            name: "landingImageSrc",
+          },
+          {
+            type: "image",
+            label: "Landing DarkMode Image",
+            name: "landingDarkImageSrc",
+          },
+          {
+            type: "rich-text",
+            label: "Intro Text",
+            isBody: false,
+
+            name: "introtext",
+          },
+        ],
+        ui: {
+          router: ({ document }) => {
+            //TODO: change this around later
+            if (document._sys.filename === "home") {
+              return `/`;
+            }
+            if (document._sys.filename === "about") {
+              return `/about`;
+            }
+            return undefined;
+          },
+        },
+      },
+
+      {
+        name: "post",
+        label: "Posts",
+        path: "content/posts",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+      },
+    ],
   },
 });
-
-export default config;
