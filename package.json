@@ -7,7 +7,9 @@
     "build": "tinacms build && next build",
     "build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && next build",
     "start": "tinacms build && next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "node postinstall.js"
+
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.9",
