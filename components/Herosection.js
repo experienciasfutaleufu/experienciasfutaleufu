@@ -2,14 +2,13 @@ import React from "react";
 import { tinaField, useTina } from "tinacms/dist/react";
 
 const HeroSection = ({ props }) => {
-  // console.log("hero section");
-  // console.log(props);
   return (
     <section
       id="home"
-      className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-fixed bg-center"
+      className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-scroll bg-center"
       style={{
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(${props.landingImageSrc})`,
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="container mx-auto px-4 text-center">
@@ -48,7 +47,7 @@ const HeroSection = ({ props }) => {
             data-aos-once="true"
           >
             <a
-              href="/index#services"
+              href="#tours"
               className="inline-block px-8 py-4 bg-green-500 text-white font-semibold rounded shadow hover:bg-green-600 transition uppercase"
               data-tina-field={tinaField(props, "herobuttontext")}
             >

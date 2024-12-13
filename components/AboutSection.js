@@ -40,7 +40,7 @@ const AboutSection = ({ props }) => {
             {props.abouttext}
           </p>
           <a
-            href="#contact"
+            href="https://wa.me/13525028826"
             className="text-blue-600 dark:text-blue-400 underline font-semibold"
             data-aos="slide-up"
             data-aos-delay="200"

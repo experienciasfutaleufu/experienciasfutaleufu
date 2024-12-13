@@ -35,7 +35,7 @@ export default function ServicesSection({ props }) {
                   >
                     {/* Card */}
                     <div
-                      className="group relative bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl dark:bg-gray-900"
+                      className="group relative bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl dark:bg-gray-900 md:min-h-[500px] xl:min-h-[300px]" // Add a min-height here
                       data-aos="fade-in"
                       data-aos-delay="100"
                     >
