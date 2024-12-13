@@ -1,6 +1,10 @@
 const nextConfig = {
   images: {
-    domains: ["assets.tina.io", "experienciasfutaleufu.vercel.app"], // Add all allowed domains
+    domains: [
+      "assets.tina.io",
+      "experienciasfutaleufu.vercel.app",
+      "cdn.b12.io",
+    ], // Add all allowed domains
   },
   async rewrites() {
     return [

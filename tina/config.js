@@ -76,16 +76,30 @@ const schema = defineSchema({
           label: "Background Hero Image",
           name: "landingImageSrc",
         },
+
         {
-          type: "rich-text",
-          label: "About Text",
-          isBody: false,
-          name: "abouttext",
+          type: "string",
+          label: "About Contact Text",
+          name: "abouttitle1",
         },
         {
           type: "string",
-          label: "About Button Text",
-          name: "aboutbuttontext",
+          label: "About Contact Text",
+          name: "abouttitle2",
+        },
+        {
+          type: "string",
+          label: "About Text",
+          name: "abouttext",
+          ui: {
+            component: "textarea",
+          },
+        },
+
+        {
+          type: "string",
+          label: "About Contact Text",
+          name: "aboutcontacttext",
         },
         {
           type: "image",
@@ -94,8 +108,19 @@ const schema = defineSchema({
         },
 
         {
-          label: "Bands",
-          name: "bands",
+          type: "string",
+          label: "Services Title 1",
+          name: "servicestitle1",
+        },
+        {
+          type: "string",
+          label: "Services Title 2",
+          name: "servicestitle2",
+        },
+
+        {
+          label: "Tours",
+          name: "tours",
           type: "object",
           list: true,
           ui: {
@@ -103,14 +128,12 @@ const schema = defineSchema({
               return { label: item.name };
             },
             defaultItem: {
-              name: "rock band",
-              instagram: "https://instagram.com/",
-              soundcloud: "https://soundcloud.com/",
-              facebook: "https://facebook.com/",
-              origin: "Santiago Chile",
-              year: "2020",
-              style: "Trance",
-              imgSrc: "/uploads/tina.jpeg",
+              name: "Piedra Aguila",
+              price: "25.000 CLP",
+              description: "Sendero clasico de Futaleufu",
+              details:
+                "La Piedra de Águila en Futaleufú, Chile, es una impresionante formación rocosa que ofrece vistas panorámicas de los valles y montañas circundantes",
+              imgSrc: "/uploads/alpaca.png",
             },
           },
 
@@ -121,34 +144,22 @@ const schema = defineSchema({
               type: "string",
             },
             {
-              label: "Instagram",
-              name: "instagram",
+              label: "Price",
+              name: "price",
               type: "string",
             },
             {
-              label: "Soundcloud",
-              name: "soundcloud",
+              label: "Description",
+              name: "description",
               type: "string",
             },
             {
-              label: "Facebook",
-              name: "facebook",
+              label: "Details",
+              name: "details",
               type: "string",
-            },
-            {
-              label: "Origin",
-              name: "origin",
-              type: "string",
-            },
-            {
-              label: "Year",
-              name: "year",
-              type: "string",
-            },
-            {
-              label: "Style",
-              name: "style",
-              type: "string",
+              ui: {
+                component: "textarea",
+              },
             },
             {
               type: "image",

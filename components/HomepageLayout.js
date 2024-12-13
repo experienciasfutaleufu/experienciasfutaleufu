@@ -4,7 +4,8 @@ import Script from "next/script";
 import { tinaField, useTina } from "tinacms/dist/react";
 import Contact from "./Contact";
 import HeroSection from "./Herosection";
-import About from "./About";
+import AboutSection from "./AboutSection";
+import ServicesSection from "./ServicesSection";
 
 export const HomepageLayout = ({ props }) => {
   // console.log("props");
@@ -21,7 +22,8 @@ export const HomepageLayout = ({ props }) => {
       </Head>
       <NavBar />
       <HeroSection props={props} />
-      <About props={props} />
+      <AboutSection props={props} />
+      <ServicesSection props={props} />
 
       <Contact />
       <footer></footer>
