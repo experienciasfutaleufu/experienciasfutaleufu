@@ -52,6 +52,7 @@ export default function ServicesSection({ props }) {
                           {tour.name}
                         </h3>
                         <p>{tour.description}</p>
+                        <p className="mt-2">{tour.price}</p>
                       </div>
                     </div>
                     {/* Card End */}
