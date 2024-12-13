@@ -141,6 +141,14 @@ export default function Contact() {
                 </button>
               </div>
             </form>
+            <a
+              href="https://wa.me/1234567890" // Replace '1234567890' with your WhatsApp number
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fixed bottom-5 right-5 bg-green-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:bg-green-600 transition-all duration-300"
+            >
+              WhatsApp
+            </a>
           </div>
         </div>
       </div>
