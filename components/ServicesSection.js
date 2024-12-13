@@ -48,11 +48,11 @@ export default function ServicesSection({ props }) {
                         />
                       </div>
                       <div className="p-6">
-                        <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-green-500">
+                        <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-green-500 capitalize">
                           {tour.name}
                         </h3>
-                        <p>{tour.description}</p>
-                        <p className="mt-2">{tour.price}</p>
+                        <p className="capitalize">{tour.description}</p>
+                        <p className="mt-2 ">{tour.price}</p>
                       </div>
                     </div>
                     {/* Card End */}
