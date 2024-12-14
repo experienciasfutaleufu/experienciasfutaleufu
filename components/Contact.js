@@ -5,9 +5,28 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import Heading from "./Heading";
 
-export default function Contact() {
+const contactform = {
+  en: {
+    title: "Contact",
+    name: "Your Name",
+    email: "Email Address",
+    message: "Message",
+    sendMessage: "Send Message",
+  },
+  es: {
+    title: "Contacto",
+    name: "Tu Nombre",
+    email: "Correo",
+    message: "Mensaje",
+    sendMessage: "Manda Correo",
+  },
+};
+
+export default function Contact({ locale }) {
   // console.log("hello");
   // console.log(process.env.NEXT_PUBLIC_EMAIL_URL);
+
+  const form = contactform[locale];
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,9 +61,9 @@ export default function Contact() {
     <section
       className="dark:bg-darkBlue3
     bg-alt2   bg-no-repeat bg-right-bottom bg-araucaria"
-      id="contacto"
+      id="contact"
     >
-      <Heading text="Contacto" />
+      <Heading text={form.title} />
       <div className="container mx-auto my-1 py-1">
         <div className="w-full max-w-2xl mx-auto my-2">
           <div className="p-6 border  rounded-md">
@@ -63,7 +82,7 @@ export default function Contact() {
               className={response ? "hidden" : ""}
             >
               <label className="block mb-6 px">
-                <span className="">Tu Nombre</span>
+                <span className="">{form.name}</span>
                 <input
                   id="name-2"
                   type="text"
@@ -77,7 +96,7 @@ export default function Contact() {
                 />
               </label>
               <label className="block mb-6">
-                <span className=" ">Correo</span>
+                <span className=" ">{form.email}</span>
                 <input
                   name="your-email"
                   type="email"
@@ -90,7 +109,7 @@ export default function Contact() {
                 />
               </label>
               <label className="block mb-6">
-                <span className=" ">Mensaje</span>
+                <span className=" ">{form.message}</span>
                 <textarea
                   name="your-message"
                   className="dark:text-white dark:bg-darkGrayishBlue p-2 px-3 block w-full mt-1 border-gray-300 rounded-md shadow-sm"
@@ -137,7 +156,7 @@ export default function Contact() {
                       </svg>
                     </>
                   )}{" "}
-                  Manda Correo
+                  {form.sendMessage}
                 </button>
               </div>
             </form>

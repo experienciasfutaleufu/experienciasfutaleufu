@@ -47,7 +47,7 @@ const HeroSection = ({ props, locale }) => {
             data-aos-once="true"
           >
             <a
-              href="#tours"
+              href="#services"
               className="inline-block px-8 py-4 bg-green-500 text-white font-semibold rounded shadow hover:bg-green-600 transition uppercase"
               data-tina-field={tinaField(props, "herobuttontext")}
             >

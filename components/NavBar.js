@@ -128,7 +128,7 @@ export default function NavBar({ props, locale }) {
           </Link>
           <Link
             href="#about"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white scroll-smooth"
           >
             {menu.aboutUs}
           </Link>

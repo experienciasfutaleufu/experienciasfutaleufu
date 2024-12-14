@@ -3,7 +3,10 @@ import { tinaField } from "tinacms/dist/react";
 
 export default function ServicesSection({ props, locale }) {
   return (
-    <section className="py-16 bg-gray-100 text-gray-800 dark:bg-darkBlue3 dark:text-white bg-fixed bg-no-repeat bg-right-bottom md:bg-martin-pescador">
+    <section
+      id="services"
+      className="py-16 bg-gray-100 text-gray-800 dark:bg-darkBlue3 dark:text-white bg-fixed bg-no-repeat bg-right-bottom md:bg-martin-pescador"
+    >
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <div className="text-center mb-12">
