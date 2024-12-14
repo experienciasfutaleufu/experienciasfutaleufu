@@ -1,4 +1,8 @@
 const nextConfig = {
+  i18n: {
+    locales: ["en", "es"], // Supported locales
+    defaultLocale: "es", // Default locale
+  },
   images: {
     domains: [
       "assets.tina.io",

@@ -7,9 +7,9 @@ import HeroSection from "./Herosection";
 import AboutSection from "./AboutSection";
 import ServicesSection from "./ServicesSection";
 
-export const HomepageLayout = ({ props }) => {
+export const HomepageLayout = ({ props, locale }) => {
   // console.log("props");
-  // console.log(props);
+  console.log(locale);
   return (
     <>
       <Head>
@@ -20,12 +20,12 @@ export const HomepageLayout = ({ props }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
-      <HeroSection props={props} />
-      <AboutSection props={props} />
-      <ServicesSection props={props} />
+      <NavBar props={props} locale={locale} />
+      <HeroSection props={props} locale={locale} />
+      <AboutSection props={props} locale={locale} />
+      <ServicesSection props={props} locale={locale} />
 
-      <Contact />
+      <Contact locale={locale} />
       <footer></footer>
       <Script src="/js/tw-elements.umd.min.js" strategy="lazyOnload" />
     </>

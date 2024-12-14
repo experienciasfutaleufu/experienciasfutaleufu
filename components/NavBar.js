@@ -3,15 +3,36 @@
 import { useState, useEffect } from "react";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
-export default function NavBar() {
+const navbarMenu = {
+  en: {
+    home: "Home",
+    aboutUs: "About Us",
+    services: "Services",
+    contact: "Contact",
+  },
+  es: {
+    home: "Inicio",
+    aboutUs: "Sobre Nos",
+    services: "Servicios",
+    contact: "Contacto",
+  },
+};
+
+export default function NavBar({ props, locale }) {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menu = navbarMenu[locale];
+  const router = useRouter();
+
+  const currentLocale =
+    typeof locale === "string" ? locale : router.locale || "en";
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
@@ -38,6 +59,11 @@ export default function NavBar() {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
+  };
+
+  const changeLocale = () => {
+    const newLocale = currentLocale === "en" ? "es" : "en";
+    router.push(router.pathname, router.asPath, { locale: newLocale });
   };
 
   return (
@@ -98,25 +124,25 @@ export default function NavBar() {
             href="#home"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
-            Inicio
+            {menu.home}
           </Link>
           <Link
             href="#about"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
-            Acerca de
+            {menu.aboutUs}
           </Link>
           <Link
             href="#services"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
-            Servicios
+            {menu.services}
           </Link>
           <Link
             href="#contact"
             className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
           >
-            Contacto
+            {menu.contact}
           </Link>
 
           {/* Dark Mode Toggle */}
@@ -153,6 +179,15 @@ export default function NavBar() {
               </svg>
             )}
           </button>
+          {/* Locale Switcher */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={changeLocale}
+              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium focus:outline-none"
+            >
+              {currentLocale === "en" ? "ES" : "EN"}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -165,7 +200,7 @@ export default function NavBar() {
                 href="#home"
                 className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
               >
-                Inicio
+                {menu.home}
               </Link>
             </li>
             <li>
@@ -173,7 +208,7 @@ export default function NavBar() {
                 href="#about"
                 className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
               >
-                Acerca de
+                {menu.aboutUs}
               </Link>
             </li>
             <li>
@@ -181,7 +216,7 @@ export default function NavBar() {
                 href="#services"
                 className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
               >
-                Servicios
+                {menu.services}
               </Link>
             </li>
             <li>
@@ -189,7 +224,7 @@ export default function NavBar() {
                 href="#contact"
                 className="block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
               >
-                Contacto
+                {menu.contact}
               </Link>
             </li>
             <li>
@@ -227,6 +262,16 @@ export default function NavBar() {
                   </svg>
                 )}
               </button>
+            </li>
+            <li>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={changeLocale}
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium focus:outline-none"
+                >
+                  {currentLocale === "en" ? "Español" : "English"}
+                </button>
+              </div>
             </li>
           </ul>
         </div>

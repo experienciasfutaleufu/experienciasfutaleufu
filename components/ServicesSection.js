@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { tinaField } from "tinacms/dist/react";
 
-export default function ServicesSection({ props }) {
+export default function ServicesSection({ props, locale }) {
   return (
     <section className="py-16 bg-gray-100 text-gray-800 dark:bg-darkBlue3 dark:text-white bg-fixed bg-no-repeat bg-right-bottom md:bg-martin-pescador">
       <div className="container mx-auto px-4">
@@ -12,15 +12,15 @@ export default function ServicesSection({ props }) {
             data-aos="slide-up"
             data-tina-field={tinaField(props, "servicestitle1")}
           >
-            {props.servicestitle1}
+            {props.servicestitle1[locale]}
           </h2>
           <p
-            className="mt-4 text-lg"
+            className="capitalize text-lg mt-4"
             data-aos="slide-up"
             data-aos-delay="50"
-            data-tina-field={tinaField(props, "servicestitle1")}
+            data-tina-field={tinaField(props, "servicestitle2")}
           >
-            {props.servicestitle1}
+            {props.servicestitle2[locale]}
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function ServicesSection({ props }) {
                       <div className="relative h-56 overflow-hidden">
                         <Image
                           src={tour.imgSrc}
-                          alt={tour.description}
+                          alt={tour.description[locale]}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-300"
                         />
@@ -51,7 +51,7 @@ export default function ServicesSection({ props }) {
                         <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-green-500 capitalize">
                           {tour.name}
                         </h3>
-                        <p className="capitalize">{tour.description}</p>
+                        <p className="capitalize">{tour.description[locale]}</p>
                         <p className="mt-2 ">{tour.price}</p>
                       </div>
                     </div>

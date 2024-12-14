@@ -55,20 +55,62 @@ const schema = defineSchema({
       path: "content/page",
       format: "mdx",
       fields: [
+        // {
+        //   label: "Hero Tagline 1",
+        //   name: "herotagline1",
+        //   type: "string",
+        // },
         {
           label: "Hero Tagline 1",
           name: "herotagline1",
-          type: "string",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
         },
+
         {
           label: "Hero Tagline 2",
           name: "herotagline2",
-          type: "string",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
         },
         {
           label: "Hero Button Text",
           name: "herobuttontext",
-          type: "string",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
         },
 
         {
@@ -78,26 +120,77 @@ const schema = defineSchema({
         },
 
         {
-          type: "string",
-          label: "About Contact Text",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
+          label: "About Headline 1",
           name: "abouttitle1",
         },
         {
-          type: "string",
-          label: "About Contact Text",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
+          label: "About Headline 2",
           name: "abouttitle2",
         },
         {
-          type: "string",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+              ui: {
+                component: "textarea",
+              },
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+              ui: {
+                component: "textarea",
+              },
+            },
+          ],
           label: "About Text",
           name: "abouttext",
-          ui: {
-            component: "textarea",
-          },
         },
 
         {
-          type: "string",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
           label: "About Contact Text",
           name: "aboutcontacttext",
         },
@@ -108,12 +201,36 @@ const schema = defineSchema({
         },
 
         {
-          type: "string",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
           label: "Services Title 1",
           name: "servicestitle1",
         },
         {
-          type: "string",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
           label: "Services Title 2",
           name: "servicestitle2",
         },
@@ -151,15 +268,42 @@ const schema = defineSchema({
             {
               label: "Description",
               name: "description",
-              type: "string",
+              type: "object",
+              fields: [
+                {
+                  type: "string",
+                  name: "en",
+                  label: "English",
+                },
+                {
+                  type: "string",
+                  name: "es",
+                  label: "Spanish",
+                },
+              ],
             },
             {
-              label: "Details",
-              name: "details",
-              type: "string",
-              ui: {
-                component: "textarea",
-              },
+              label: "Description Detail",
+              name: "descriptiondetail",
+              type: "object",
+              fields: [
+                {
+                  type: "string",
+                  name: "en",
+                  label: "English",
+                  ui: {
+                    component: "textarea",
+                  },
+                },
+                {
+                  type: "string",
+                  name: "es",
+                  label: "Spanish",
+                  ui: {
+                    component: "textarea",
+                  },
+                },
+              ],
             },
             {
               type: "image",
@@ -205,20 +349,7 @@ const schema = defineSchema({
             },
           ],
         },
-        // {
-        //   type: "object",
-        //   list: true,
-        //   name: "blockdemo",
-        //   label: "BlockDemo",
-        //   templates: [imageBlock, contentBlock, headingBlock],
-        // },
-        {
-          type: "object",
-          list: true,
-          name: "kayak",
-          label: "Kayak Section",
-          templates: [imageBlock, contentBlock, headingBlock],
-        },
+
         {
           type: "object",
           list: true,

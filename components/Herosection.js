@@ -1,7 +1,7 @@
 import React from "react";
 import { tinaField, useTina } from "tinacms/dist/react";
 
-const HeroSection = ({ props }) => {
+const HeroSection = ({ props, locale }) => {
   return (
     <section
       id="home"
@@ -23,7 +23,7 @@ const HeroSection = ({ props }) => {
             data-aos-once="true"
           >
             <div data-tina-field={tinaField(props, "herotagline1")}>
-              {props.herotagline1}{" "}
+              {props.herotagline1[locale]}
             </div>
           </h1>
           <p
@@ -36,7 +36,7 @@ const HeroSection = ({ props }) => {
             data-aos-once="true"
             data-tina-field={tinaField(props, "herotagline2")}
           >
-            {props.herotagline2}
+            {props.herotagline2[locale]}
           </p>
           <div
             data-aos="slide-up"
@@ -51,7 +51,7 @@ const HeroSection = ({ props }) => {
               className="inline-block px-8 py-4 bg-green-500 text-white font-semibold rounded shadow hover:bg-green-600 transition uppercase"
               data-tina-field={tinaField(props, "herobuttontext")}
             >
-              {props.herobuttontext}
+              {props.herobuttontext[locale]}
             </a>
           </div>
         </div>

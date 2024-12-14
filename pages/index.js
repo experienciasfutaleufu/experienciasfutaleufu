@@ -13,12 +13,10 @@ export default function Home(props) {
   });
 
   const content = data.page.body;
-  // const facebook = data.page.facebook;
-  // const bands = data.page.bands;
-  //console.log(data.page);
+  console.log(props.locale);
 
   return (
-    <HomepageLayout props={data.page}>
+    <HomepageLayout props={data.page} locale={props.locale}>
       <div data-tina-field={tinaField(data.page, "body")}>
         <TinaMarkdown content={content} />
       </div>
@@ -26,16 +24,40 @@ export default function Home(props) {
   );
 }
 
-export const getStaticProps = async () => {
-  const { data, query, variables } = await client.queries.page({
-    relativePath: "home.mdx",
-  });
+export const getStaticProps = async ({ locale }) => {
+  // Define the localized path for the content
+  const relativePath = `home.mdx`;
 
-  return {
-    props: {
-      data,
-      query,
-      variables,
-    },
-  };
+  try {
+    // Fetch localized content using the Tina client
+    const { data, query, variables } = await client.queries.page({
+      relativePath,
+    });
+
+    return {
+      props: {
+        data,
+        query,
+        variables,
+        locale, // Pass the current locale to the page
+      },
+    };
+  } catch (error) {
+    console.error(`Error fetching content for locale "${locale}":`, error);
+
+    // Fallback to default locale if localized content is missing
+    const fallbackRelativePath = `home.mdx`;
+    const { data, query, variables } = await client.queries.page({
+      relativePath: fallbackRelativePath,
+    });
+
+    return {
+      props: {
+        data,
+        query,
+        variables,
+        locale: "es", // Fallback locale
+      },
+    };
+  }
 };
