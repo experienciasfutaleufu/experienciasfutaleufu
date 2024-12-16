@@ -23,8 +23,8 @@ const contactform = {
 };
 
 export default function Contact({ locale }) {
-  // console.log("hello");
-  // console.log(process.env.NEXT_PUBLIC_EMAIL_URL);
+  console.log("NEXT_PUBLIC_EMAIL_URL"); // Accessible in the browser
+  console.log(process.env.NEXT_PUBLIC_EMAIL_URL); // Accessible in the browser
 
   const form = contactform[locale];
 
@@ -40,6 +40,7 @@ export default function Contact({ locale }) {
     evt.preventDefault();
 
     const formData = new FormData(evt.target);
+
     let EMAIL_URL = process.env.NEXT_PUBLIC_EMAIL_URL;
 
     console.log("EMAIL_URL", EMAIL_URL);
