@@ -4,10 +4,19 @@ const nextConfig = {
     defaultLocale: "es", // Default locale
   },
   images: {
-    domains: [
-      "assets.tina.io",
-      "experienciasfutaleufu.vercel.app",
-      "cdn.b12.io",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.tina.io",
+      },
+      {
+        protocol: "https",
+        hostname: "experienciasfutaleufu.vercel.app",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.b12.io",
+      },
     ], // Add all allowed domains
   },
   async rewrites() {

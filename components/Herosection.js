@@ -14,7 +14,7 @@ const HeroSection = ({ props, locale }) => {
       <div className="container mx-auto px-4 text-center">
         <div className="py-16">
           <h1
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-4 capitalize"
             data-aos="slide-up"
             data-aos-offset="120"
             data-aos-delay="0"
@@ -27,7 +27,7 @@ const HeroSection = ({ props, locale }) => {
             </div>
           </h1>
           <p
-            className="text-lg md:text-2xl text-gray-300 mb-8"
+            className="text-lg md:text-2xl text-gray-300 mb-8 capitalize"
             data-aos="slide-up"
             data-aos-offset="120"
             data-aos-delay="50"
