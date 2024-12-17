@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "axios": "^1.7.7",
+    "axios": "^1.7.9",
     "encrypted-env": "^0.2.1",
     "formdata-node": "^6.0.3",
     "next": "^15.0.2",
