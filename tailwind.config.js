@@ -19,9 +19,7 @@ module.exports = {
         mujer: "url('/images/mujer.png')",
         "martin-pescador": "url('/images/martin-pescador.png')",
         araucaria: "url('/images/araucarias1_bckgr.png')",
-
-        "image-two":
-          "url('https://images.unsplash.com/photo-1629651726230-6430554a8890?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80')",
+        alpaca: "url('/images/alpaca-small.png')",
       }),
 
       colors: {
@@ -42,7 +40,7 @@ module.exports = {
         veryDarkBlue: "hsl(229, 31%, 21%)",
       },
       fontFamily: {
-        sans: ["Bai Jamjuree", "sans-serif"],
+        sans: ["Poppins", "sans-serif"],
       },
     },
   },

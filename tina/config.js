@@ -312,65 +312,7 @@ const schema = defineSchema({
             },
           ],
         },
-        {
-          label: "Actividades",
-          name: "activities",
-          type: "object",
-          list: true,
-          ui: {
-            itemProps: (item) => {
-              return { label: item.name };
-            },
-            defaultItem: {
-              name: "Actividad",
-              text: "Detalle Aqui",
-              imgSrc: "/uploads/tina.jpeg",
-            },
-          },
 
-          fields: [
-            {
-              label: "Name",
-              name: "name",
-              type: "string",
-            },
-            {
-              label: "Detalle",
-              name: "text",
-              type: "string",
-              ui: {
-                component: "textarea",
-              },
-            },
-            {
-              type: "image",
-              label: "Imagen",
-              name: "imgSrc",
-            },
-          ],
-        },
-
-        {
-          type: "object",
-          list: true,
-          name: "feria",
-          label: "Feria Section",
-          templates: [imageBlock, contentBlock, headingBlock],
-        },
-        {
-          type: "object",
-          list: true,
-          name: "llegar",
-          label: "Como Llegar Section",
-          templates: [imageBlock, contentBlock, headingBlock],
-        },
-        {
-          type: "object",
-          list: true,
-          name: "tickets",
-          label: "Tickets Info",
-          templates: [imageBlock, contentBlock, headingBlock],
-        },
         {
           label: "Fotos",
           name: "fotos",
@@ -400,21 +342,21 @@ const schema = defineSchema({
           ],
         },
 
-        {
-          type: "string",
-          label: "FAQ text",
-          name: "FAQintro",
-          ui: {
-            component: "textarea",
-          },
-        },
-        {
-          type: "object",
-          list: true,
-          name: "camping",
-          label: "Camping Section",
-          templates: [imageBlock, contentBlock, headingBlock],
-        },
+        // {
+        //   type: "string",
+        //   label: "FAQ text",
+        //   name: "FAQintro",
+        //   ui: {
+        //     component: "textarea",
+        //   },
+        // },
+        // {
+        //   type: "object",
+        //   list: true,
+        //   name: "camping",
+        //   label: "Camping Section",
+        //   templates: [imageBlock, contentBlock, headingBlock],
+        // },
         {
           label: "Preguntas Frequentes",
           name: "faq",

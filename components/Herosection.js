@@ -1,11 +1,18 @@
 import React from "react";
 import { tinaField, useTina } from "tinacms/dist/react";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const HeroSection = ({ props, locale }) => {
   return (
     <section
       id="home"
-      className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-scroll bg-center"
+      className={`${poppins.className} relative min-h-[80vh] flex items-center justify-center bg-cover bg-scroll bg-center`}
+      // className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-scroll bg-center"
       style={{
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(${props.landingImageSrc})`,
         backgroundRepeat: "no-repeat",

@@ -6,6 +6,8 @@ import Contact from "./Contact";
 import HeroSection from "./Herosection";
 import AboutSection from "./AboutSection";
 import ServicesSection from "./ServicesSection";
+import FAQ from "./FAQ";
+import Fotos from "./Fotos";
 
 export const HomepageLayout = ({ props, locale }) => {
   // console.log("props");
@@ -24,6 +26,8 @@ export const HomepageLayout = ({ props, locale }) => {
       <HeroSection props={props} locale={locale} />
       <AboutSection props={props} locale={locale} />
       <ServicesSection props={props} locale={locale} />
+      <Fotos props={props} locale={locale} />
+      {/* <FAQ props={props} locale={locale} /> */}
 
       <Contact locale={locale} />
       <footer></footer>

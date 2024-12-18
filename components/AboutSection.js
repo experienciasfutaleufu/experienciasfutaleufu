@@ -1,9 +1,19 @@
 import Image from "next/image";
 import { tinaField, useTina } from "tinacms/dist/react";
+const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP;
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const AboutSection = ({ props, locale }) => {
   return (
-    <section id="about" className="bg-white dark:bg-gray-900 py-16 md:py-24">
+    <section
+      id="about"
+      className={`${poppins.className} bg-white dark:bg-gray-900 py-16 md:py-24 bg-no-repeat bg-left-bottom bg-fixed `}
+    >
       <div className="container mx-auto px-4 flex flex-col items-center space-y-8 md:flex-row md:space-y-0 md:space-x-8">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h2
@@ -40,7 +50,7 @@ const AboutSection = ({ props, locale }) => {
             {props.abouttext[locale]}
           </p>
           <a
-            href="https://wa.me/13525028826"
+            href={`https://wa.me/${WHATSAPP}`}
             className="text-blue-600 dark:text-blue-400 underline font-semibold"
             data-aos="slide-up"
             data-aos-delay="200"

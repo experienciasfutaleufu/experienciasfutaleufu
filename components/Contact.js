@@ -10,6 +10,7 @@ const contactform = {
     email: "Email Address",
     message: "Message",
     sendMessage: "Send Message",
+    sent: "Message Sent!",
   },
   es: {
     title: "Contacto",
@@ -17,8 +18,10 @@ const contactform = {
     email: "Correo",
     message: "Mensaje",
     sendMessage: "Manda Correo",
+    sent: "Enviado",
   },
 };
+const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP;
 
 export default function Contact({ locale }) {
   const form = contactform[locale];
@@ -137,7 +140,7 @@ export default function Contact({ locale }) {
               </form>
             )}
             <a
-              href="https://wa.me/1234567890"
+              href={`https://wa.me/${WHATSAPP}`}
               target="_blank"
               rel="noopener noreferrer"
               className="fixed bottom-5 right-5 bg-green-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:bg-green-600 transition-all duration-300"

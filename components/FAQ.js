@@ -2,9 +2,9 @@ import React from "react";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { client } from "../tina/__generated__/client";
 
-export default function FAQ(props) {
+export default function FAQ({ props }) {
   // console.log("faq");
-  // console.log(props.data.faq);
+  //console.log(props.faq);
   return (
     <section
       className="dark:bg-darkBlue light-back bg-fixed bg-no-repeat bg-right-bottom"
@@ -18,13 +18,11 @@ export default function FAQ(props) {
         <p
           className="max-w-lg mx-auto text-center"
           data-tina-field={tinaField(props.data, "FAQintro")}
-
-          // data-tina-field={tinaField(data.pagez, "introtext")}
         >
-          {props.data.FAQintro}
+          {props.FAQintro}
         </p>
         <div className="max-w-2xl m-8 mx-auto overflow-hidden">
-          {props.data.faq.map((faq, index) => (
+          {props.faq.map((faq, index) => (
             <div
               className="py-1 border-b outline-none group"
               tabIndex={index}
