@@ -12,7 +12,7 @@ const AboutSection = ({ props, locale }) => {
   return (
     <section
       id="about"
-      className={`${poppins.className} bg-white dark:bg-gray-900 py-16 md:py-24 bg-no-repeat bg-left-bottom bg-fixed `}
+      className={`${poppins.className} bg-gray-200 dark:bg-gray-900 py-16 md:py-24 bg-no-repeat bg-left-bottom bg-fixed `}
     >
       <div className="container mx-auto px-4 flex flex-col items-center space-y-8 md:flex-row md:space-y-0 md:space-x-8">
         <div className="w-full md:w-1/2 text-center md:text-left">
