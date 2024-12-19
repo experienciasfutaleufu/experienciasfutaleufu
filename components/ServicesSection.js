@@ -65,8 +65,11 @@ export default function ServicesSection({ props, locale }) {
                           <p className="capitalize">
                             {tour.description[locale]}
                           </p>
-                          <p className="mt-2 ">
-                            {tour.price} (Haz Clic Para Más Info)
+                          <p className="mt-2 ">{tour.price}</p>
+                          <p className="mt-2">
+                            {locale === "es"
+                              ? "Haz clic para más información"
+                              : "Click for more info"}
                           </p>
                         </div>
                       </div>
