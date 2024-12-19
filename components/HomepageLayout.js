@@ -8,6 +8,7 @@ import ServicesSection from "./ServicesSection";
 import FAQ from "./FAQ";
 import Fotos from "./Fotos";
 import Testimonials from "./Testimonials";
+import ModalTours from "./ModalTours";
 
 export const HomepageLayout = ({ props, locale }) => {
   // console.log("props");
@@ -31,6 +32,7 @@ export const HomepageLayout = ({ props, locale }) => {
       <FAQ props={props} locale={locale} />
 
       <Contact locale={locale} />
+      <ModalTours props={props} locale={locale} />
       <footer></footer>
       <Script src="/js/tw-elements.umd.min.js" strategy="lazyOnload" />
     </>

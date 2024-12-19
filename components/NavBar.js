@@ -144,7 +144,25 @@ export default function NavBar({ props, locale }) {
           >
             {menu.contact}
           </Link>
-
+          <Link
+            href="https://www.instagram.com/experienciasfutaleufu/"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+            target="_blank"
+          >
+            {darkMode ? (
+              <img
+                src="/images/instagram.png"
+                alt="Instagram"
+                className="w-6 h-6"
+              />
+            ) : (
+              <img
+                src="/images/instagram2.png"
+                alt="Instagram"
+                className="w-6 h-6"
+              />
+            )}
+          </Link>
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
@@ -272,6 +290,27 @@ export default function NavBar({ props, locale }) {
                   {currentLocale === "en" ? "Español" : "English"}
                 </button>
               </div>
+            </li>
+            <li>
+              <Link
+                href="https://www.instagram.com/experienciasfutaleufu/"
+                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                target="_blank"
+              >
+                {darkMode ? (
+                  <img
+                    src="/images/instagram.png"
+                    alt="Instagram"
+                    className="w-6 h-6"
+                  />
+                ) : (
+                  <img
+                    src="/images/instagram2.png"
+                    alt="Instagram"
+                    className="w-6 h-6"
+                  />
+                )}
+              </Link>
             </li>
           </ul>
         </div>

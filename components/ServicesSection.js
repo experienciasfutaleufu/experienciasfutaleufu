@@ -32,34 +32,47 @@ export default function ServicesSection({ props, locale }) {
           {props.tours
             ? props.tours.map(function (tour, i) {
                 return (
-                  <div
-                    key={`tour${i}`}
+                  <a
+                    href={`#tour${i}`}
+                    className="open-popup-link"
+                    data-te-toggle="modal"
+                    data-te-target={`#tour${i}`}
+                    key={tour.name}
                     data-tina-field={tinaField(tour, "name")}
                   >
-                    {/* Card */}
                     <div
-                      className="group relative bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl dark:bg-gray-900 md:min-h-[500px] xl:min-h-[300px]" // Add a min-height here
-                      data-aos="fade-in"
-                      data-aos-delay="100"
+                      key={`tour${i}`}
+                      data-tina-field={tinaField(tour, "name")}
                     >
-                      <div className="relative h-56 overflow-hidden">
-                        <Image
-                          src={tour.imgSrc}
-                          alt={tour.description[locale]}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
+                      {/* Card */}
+                      <div
+                        className="group relative bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl dark:bg-gray-900 md:min-h-[500px] xl:min-h-[300px]" // Add a min-height here
+                        data-aos="fade-in"
+                        data-aos-delay="100"
+                      >
+                        <div className="relative h-56 overflow-hidden">
+                          <Image
+                            src={tour.imgSrc}
+                            alt={tour.description[locale]}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="p-6">
+                          <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-green-500 capitalize">
+                            {tour.name}
+                          </h3>
+                          <p className="capitalize">
+                            {tour.description[locale]}
+                          </p>
+                          <p className="mt-2 ">
+                            {tour.price} (Haz Clic Para Más Info)
+                          </p>
+                        </div>
                       </div>
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-green-500 capitalize">
-                          {tour.name}
-                        </h3>
-                        <p className="capitalize">{tour.description[locale]}</p>
-                        <p className="mt-2 ">{tour.price}</p>
-                      </div>
+                      {/* Card End */}
                     </div>
-                    {/* Card End */}
-                  </div>
+                  </a>
                 );
               })
             : null}
