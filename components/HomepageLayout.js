@@ -28,7 +28,7 @@ export const HomepageLayout = ({ props, locale }) => {
       <ServicesSection props={props} locale={locale} />
       <Fotos props={props} locale={locale} />
       <Testimonials props={props} locale={locale} />
-      {/* <FAQ props={props} locale={locale} /> */}
+      <FAQ props={props} locale={locale} />
 
       <Contact locale={locale} />
       <footer></footer>

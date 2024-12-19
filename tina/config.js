@@ -435,33 +435,82 @@ const schema = defineSchema({
         //   templates: [imageBlock, contentBlock, headingBlock],
         // },
         {
-          label: "Preguntas Frequentes",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
+          label: "FAQ Title",
+          name: "faqtitle",
+        },
+        {
+          label: "Preguntas Frecuentes",
           name: "faq",
           type: "object",
           list: true,
           ui: {
             itemProps: (item) => {
-              return { label: item.question };
+              return { label: item.question?.en || "New FAQ Item" }; // Fallback if `en` is not defined
             },
             defaultItem: {
-              question: "Que es ? ",
-              response: "Esto signifiga",
+              question: {
+                en: "What is it?",
+                es: "¿Qué es?",
+              },
+              response: {
+                en: "This means...",
+                es: "Esto significa...",
+              },
             },
           },
-
           fields: [
             {
               label: "Question",
               name: "question",
-              type: "string",
+              type: "object",
+              fields: [
+                {
+                  label: "English",
+                  name: "en",
+                  type: "string",
+                },
+                {
+                  label: "Spanish",
+                  name: "es",
+                  type: "string",
+                },
+              ],
             },
             {
               label: "Response",
               name: "response",
-              type: "string",
-              ui: {
-                component: "textarea",
-              },
+              type: "object",
+              fields: [
+                {
+                  label: "English",
+                  name: "en",
+                  type: "string",
+                  ui: {
+                    component: "textarea",
+                  },
+                },
+                {
+                  label: "Spanish",
+                  name: "es",
+                  type: "string",
+                  ui: {
+                    component: "textarea",
+                  },
+                },
+              ],
             },
           ],
         },
