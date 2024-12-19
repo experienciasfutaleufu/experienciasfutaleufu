@@ -1,7 +1,6 @@
 import Head from "next/head";
 import NavBar from "./NavBar";
 import Script from "next/script";
-import { tinaField, useTina } from "tinacms/dist/react";
 import Contact from "./Contact";
 import HeroSection from "./Herosection";
 import AboutSection from "./AboutSection";

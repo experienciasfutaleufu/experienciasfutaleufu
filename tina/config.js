@@ -341,6 +341,73 @@ const schema = defineSchema({
             },
           ],
         },
+        {
+          name: "testimonials",
+          label: "Testimonials",
+          type: "object",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: item.name };
+            },
+            defaultItem: {
+              name: "Don Juan",
+              location: "Futaleufu, Chile",
+              quote: "Sendero clasico de Futaleufu. Muy bakan la question",
+              image: "/uploads/alpaca.png",
+            },
+          },
+          fields: [
+            {
+              name: "name",
+              label: "Name",
+              type: "string",
+            },
+
+            {
+              label: "Bi Lingal Quote",
+              name: "quotes",
+              type: "object",
+              fields: [
+                {
+                  type: "string",
+                  name: "en",
+                  label: "English",
+                  ui: {
+                    component: "textarea",
+                  },
+                },
+                {
+                  type: "string",
+                  name: "es",
+                  label: "Spanish",
+                  ui: {
+                    component: "textarea",
+                  },
+                },
+              ],
+            },
+
+            {
+              name: "quote",
+              label: "Quote",
+              type: "string",
+              ui: {
+                component: "textarea",
+              },
+            },
+            {
+              name: "location",
+              label: "Location",
+              type: "string",
+            },
+            {
+              name: "image",
+              label: "Image",
+              type: "image",
+            },
+          ],
+        },
 
         // {
         //   type: "string",
