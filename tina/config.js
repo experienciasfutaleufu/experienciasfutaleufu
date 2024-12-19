@@ -342,6 +342,24 @@ const schema = defineSchema({
           ],
         },
         {
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "en",
+              label: "English",
+            },
+            {
+              type: "string",
+              name: "es",
+              label: "Spanish",
+            },
+          ],
+          label: "Testimonials Title",
+          name: "testimonialstitle",
+        },
+
+        {
           name: "testimonials",
           label: "Testimonials",
           type: "object",
@@ -365,8 +383,8 @@ const schema = defineSchema({
             },
 
             {
-              label: "Bi Lingal Quote",
-              name: "quotes",
+              label: "Bilingual Quote",
+              name: "quote",
               type: "object",
               fields: [
                 {
@@ -388,14 +406,6 @@ const schema = defineSchema({
               ],
             },
 
-            {
-              name: "quote",
-              label: "Quote",
-              type: "string",
-              ui: {
-                component: "textarea",
-              },
-            },
             {
               name: "location",
               label: "Location",

@@ -1,21 +1,19 @@
 import { useState, useEffect } from "react";
 import { tinaField } from "tinacms/dist/react";
 
-const Testimonials = ({ props }) => {
+const Testimonials = ({ props, locale }) => {
   const testimonials = props.testimonials;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     // Check if the URL contains '/admin'
-    const isAdminPage = window.location.pathname.includes("admin");
+    //const isAdminPage = window.location.pathname.includes("admin");
 
-    if (!isAdminPage) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-      }, 4000); // Change testimonial every 4 seconds
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 4000); // Change testimonial every 4 seconds
 
-      return () => clearInterval(interval);
-    }
+    return () => clearInterval(interval);
   }, [testimonials.length]);
 
   return (
@@ -24,8 +22,11 @@ const Testimonials = ({ props }) => {
       className="py-12 bg-gray-100 dark:bg-gray-900 bg-no-repeat bg-right-bottom bg-fixed md:bg-alpaca"
     >
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-          What Our Clients Say
+        <h2
+          className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100 capitalize"
+          data-tina-field={tinaField(props, "testimonialstitle")}
+        >
+          {props.testimonialstitle[locale]}
         </h2>
         <div
           className="relative max-w-3xl mx-auto"
@@ -36,11 +37,8 @@ const Testimonials = ({ props }) => {
             alt={testimonials[currentIndex].name}
             className="w-64 h-64 mx-auto rounded-full border-4 border-blue-500"
           />
-          <blockquote
-            className="text-lg italic text-gray-700 dark:text-gray-300 mt-4"
-            data-tina-field={tinaField(testimonials[currentIndex], "quote")}
-          >
-            &ldquo;{testimonials[currentIndex].quote}&rdquo;
+          <blockquote className="text-lg italic text-gray-700 dark:text-gray-300 mt-4">
+            &ldquo;{testimonials[currentIndex].quote[locale]}&rdquo;
           </blockquote>
           <div className="mt-4">
             <p
