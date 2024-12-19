@@ -46,10 +46,11 @@ export default function ServicesSection({ props, locale }) {
                     >
                       {/* Card */}
                       <div
-                        className="group relative bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl dark:bg-gray-900 md:min-h-[500px] xl:min-h-[300px]" // Add a min-height here
+                        className="group relative bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl dark:bg-gray-900 flex flex-col h-full  md:min-h-[500px] xl:min-h-[300px]"
                         data-aos="fade-in"
                         data-aos-delay="100"
                       >
+                        {/* Image Section */}
                         <div className="relative h-56 overflow-hidden">
                           <Image
                             src={tour.imgSrc}
@@ -58,21 +59,28 @@ export default function ServicesSection({ props, locale }) {
                             className="object-cover group-hover:scale-110 transition-transform duration-300"
                           />
                         </div>
-                        <div className="p-6">
+
+                        {/* Content Section */}
+                        <div className="p-6 flex flex-col flex-grow">
                           <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-green-500 capitalize">
                             {tour.name}
                           </h3>
-                          <p className="capitalize">
+                          <p className="capitalize flex-grow">
                             {tour.description[locale]}
                           </p>
-                          <p className="mt-2 ">{tour.price}</p>
-                          <p className="mt-2">
-                            {locale === "es"
-                              ? "Haz clic para más información"
-                              : "Click for more info"}
-                          </p>
+
+                          {/* Price and Info Section */}
+                          <div className="mt-auto">
+                            <p className="mt-2">{tour.price}</p>
+                            <p className="mt-2">
+                              {locale === "es"
+                                ? "Haz clic para más información"
+                                : "Click for more info"}
+                            </p>
+                          </div>
                         </div>
                       </div>
+
                       {/* Card End */}
                     </div>
                   </a>
