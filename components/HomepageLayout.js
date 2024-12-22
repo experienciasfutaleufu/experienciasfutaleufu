@@ -19,7 +19,7 @@ export const HomepageLayout = ({ props, locale }) => {
         <title>Experiencias Futaleufu</title>
         <meta
           name="description"
-          content="Turismo y caminatas en Futaleufu Chile"
+          content="Tu Aventura Te Espera en Futaleufu Chile"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
