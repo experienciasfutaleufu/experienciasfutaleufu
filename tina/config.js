@@ -199,6 +199,7 @@ const schema = defineSchema({
           type: "image",
           label: "About Image",
           name: "aboutImgSrc",
+          required: true, // Makes this field required
         },
 
         {
@@ -310,6 +311,7 @@ const schema = defineSchema({
               type: "image",
               label: "Hero image",
               name: "imgSrc",
+              required: true, // Makes this field required
             },
           ],
         },
@@ -381,6 +383,7 @@ const schema = defineSchema({
               name: "name",
               label: "Name",
               type: "string",
+              required: true, // Makes this field required
             },
 
             {
@@ -411,11 +414,13 @@ const schema = defineSchema({
               name: "location",
               label: "Location",
               type: "string",
+              required: true, // Makes this field required
             },
             {
               name: "image",
               label: "Image",
               type: "image",
+              required: true, // Makes this field required
             },
           ],
         },
