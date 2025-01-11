@@ -117,6 +117,7 @@ const schema = defineSchema({
           type: "image",
           label: "Background Hero Image",
           name: "landingImageSrc",
+          required: true, // Makes this field required
         },
 
         {
