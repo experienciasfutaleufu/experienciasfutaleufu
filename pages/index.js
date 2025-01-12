@@ -13,7 +13,7 @@ export default function Home(props) {
   });
 
   const content = data.page.body;
-  console.log(props.locale);
+  //console.log(props.locale);
 
   return (
     <HomepageLayout props={data.page} locale={props.locale}>

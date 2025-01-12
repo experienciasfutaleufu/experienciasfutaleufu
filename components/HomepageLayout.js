@@ -12,7 +12,7 @@ import ModalTours from "./ModalTours";
 
 export const HomepageLayout = ({ props, locale }) => {
   // console.log("props");
-  console.log(locale);
+  //console.log(locale);
   return (
     <>
       <Head>
