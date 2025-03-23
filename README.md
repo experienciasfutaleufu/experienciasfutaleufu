@@ -43,4 +43,5 @@ You can check out [Tina Github repository](https://github.com/tinacms/tinacms) -
 
 ## [Deploy on Vercel](https://tina.io/guides/tina-cloud/add-tinacms-to-existing-site/deployment/)
 
-testing 1234
+
+For the website --> https://experienciasfutaleufu.cl
