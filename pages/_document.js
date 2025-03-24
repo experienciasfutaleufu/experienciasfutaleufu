@@ -1,4 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { Analytics } from '@vercel/analytics/next';
+
 
 export default function Document() {
   return (
@@ -19,6 +21,8 @@ export default function Document() {
       <body className="dark:bg-darkBlue dark:text-white  bg-alt1">
         <Main />
         <NextScript />
+        <Analytics />
+
       </body>
     </Html>
   );
