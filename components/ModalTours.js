@@ -1,3 +1,5 @@
+import MarkdownContent from "./MarkdownContent";
+
 export default function ModalTours({ props, locale }) {
   return (
     <>
