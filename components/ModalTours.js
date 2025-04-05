@@ -61,8 +61,8 @@ export default function ModalTours({ props, locale }) {
                 />
 
               <p className="mt-4 capitalize font-bold italic text-lg">{tour.description[locale]}</p>
-              <p className="mt-2  mb-2 text-lg">{tour.price}</p>
-                <hr className="border-0 h-px bg-gray-200 my-8" />
+              <p className="mt-2 text-center text-lg">{tour.price}</p>
+                <hr className="border-0 h-px bg-gray-200 my-6" />
 
                 <MarkdownContent  markdownText={tour.descriptiondetail[locale]} />
                 
