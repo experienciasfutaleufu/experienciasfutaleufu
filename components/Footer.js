@@ -7,7 +7,7 @@ export default function Footer() {
         <div>&copy; {new Date().getFullYear()} Experiencias Futaleufú</div>
 
         <a
-          href="https://www.instagram.com/amapatgonia/"
+          href="https://www.instagram.com/experienciasfutaleufu/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-pink-500 mx-8"
