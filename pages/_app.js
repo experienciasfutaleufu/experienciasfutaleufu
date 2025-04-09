@@ -4,6 +4,8 @@ import "./global.css";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Analytics } from '@vercel/analytics/next';
+
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -15,6 +17,8 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Component {...pageProps} />
+      <Analytics />
+
     </>
   );
 };
