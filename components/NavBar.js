@@ -26,7 +26,15 @@ const navbarMenu = {
 };
 
 export default function NavBar({ props, locale }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const storedTheme = localStorage.getItem("theme");
+    return (
+      storedTheme === "dark" ||
+      (!storedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
+  });
+  const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menu = navbarMenu[locale];
   const router = useRouter();
@@ -35,17 +43,11 @@ export default function NavBar({ props, locale }) {
     typeof locale === "string" ? locale : router.locale || "en";
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (
-      storedTheme === "dark" ||
-      (!storedTheme &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-      setDarkMode(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
   const toggleDarkMode = () => {
@@ -166,7 +168,7 @@ export default function NavBar({ props, locale }) {
             className="text-gray-800 dark:text-white focus:outline-none"
             aria-label="Toggle Theme"
           >
-            {darkMode ? (
+            {mounted && darkMode ? (
               // Sun Icon for Light Mode
               <svg
                 id="theme-toggle-light-icon"
@@ -249,7 +251,7 @@ export default function NavBar({ props, locale }) {
                 className="text-gray-800 dark:text-white focus:outline-none"
                 aria-label="Toggle Theme"
               >
-                {darkMode ? (
+                {mounted && darkMode ? (
                   // Sun Icon for Light Mode
                   <svg
                     id="theme-toggle-light-icon"

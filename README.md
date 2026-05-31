@@ -8,10 +8,22 @@ Install the project's dependencies:
 yarn install
 ```
 
+With npm:
+
+```bash
+npm install
+```
+
 Run the project locally:
 
 ```
 yarn dev
+```
+
+With npm:
+
+```bash
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -30,6 +42,42 @@ Build the project:
 
 ```bash
 yarn build
+```
+
+With npm:
+
+```bash
+npm run build
+```
+
+## Postinstall Behavior
+
+The `postinstall.js` script handles `.env` encryption/decryption for local workflows.
+
+- It is skipped automatically in production environments.
+- It can run non-interactively when a password is provided through environment variables.
+
+Production detection currently checks any of these values:
+
+- `NODE_ENV=production`
+- `VERCEL_ENV=production`
+- `CONTEXT=production`
+- `npm_config_production=true`
+
+Password environment variables (first match wins):
+
+- `POSTINSTALL_PASSWORD`
+- `ENV_ENCRYPTION_PASSWORD`
+- `DOTENV_ENCRYPTION_PASSWORD`
+
+Examples:
+
+```bash
+POSTINSTALL_PASSWORD=your_password npm install
+```
+
+```bash
+POSTINSTALL_PASSWORD=your_password node postinstall.js
 ```
 
 ## Learn More

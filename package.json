@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
-    "build": "tinacms build && next build",
+    "build": "tinacms build --skip-cloud-checks && next build",
     "postbuild": "copyfiles -u 4 node_modules/tw-elements/dist/js/tw-elements.umd.min.* public/js",
     "postinstall": "node postinstall.js",
-    "start": "tinacms build && next start",
-    "lint": "next lint"
+    "start": "tinacms build --skip-cloud-checks && next start",
+    "lint": "eslint .",
+    "test:contact:dry": "node scripts/contact-dry-run.js",
+    "test:contact:preview": "node scripts/contact-payload-preview.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
@@ -17,22 +19,28 @@
     "cli-progress": "^3.12.0",
     "encrypted-env": "^0.2.1",
     "formdata-node": "^6.0.3",
-    "next": "^15.0.2",
+    "next": "^16.2.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.1",
     "react-markdown": "^9.1.0",
     "sharp": "^0.34.1",
-    "tinacms": "^2.4.0",
+    "tinacms": "^3.8.3",
     "tw-elements": "1.0.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
-    "@tinacms/cli": "^1.6.11",
+    "@tinacms/cli": "^2.4.1",
     "autoprefixer": "^10.4.20",
     "babel-plugin-styled-components": "^2.1.4",
     "copyfiles": "^2.4.1",
-    "postcss": "^8.4.47",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
+    "postcss": "^8.5.15",
     "tailwindcss": "^3.4.14"
+  },
+  "overrides": {
+    "js-cookie": "3.0.8",
+    "lodash": "4.18.1"
   }
 }

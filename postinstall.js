@@ -2,11 +2,44 @@ const crypto = require("node:crypto");
 const fs = require("node:fs");
 const readline = require("node:readline");
 
-// Check if running in production based on // Check if running in production based on CONTEXT or VERCEL_ENV
-if (
+function readPasswordFromDotEnv() {
+  if (!fs.existsSync(".env")) return "";
+
+  const content = fs.readFileSync(".env", "utf8");
+  const lines = content.split(/\r?\n/);
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+
+    const separatorIndex = trimmed.indexOf("=");
+    if (separatorIndex === -1) continue;
+
+    const key = trimmed.slice(0, separatorIndex).trim();
+    if (key.toLowerCase() !== "password") continue;
+
+    let value = trimmed.slice(separatorIndex + 1).trim();
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+
+    return value;
+  }
+
+  return "";
+}
+
+const isProductionEnv =
+  process.env.NODE_ENV?.toLowerCase() === "production" ||
   process.env.VERCEL_ENV?.toLowerCase() === "production" ||
-  process.env.CONTEXT?.toLowerCase() === "production"
-) {
+  process.env.CONTEXT?.toLowerCase() === "production" ||
+  process.env.npm_config_production === "true";
+
+// Never run encryption/decryption logic in production environments.
+if (isProductionEnv) {
   console.log(
     "Production environment detected. Skipping encryption/decryption."
   );
@@ -18,8 +51,21 @@ console.log(
   "Not in production environment. Proceeding with encryption/decryption."
 );
 
-console.log("process.env");
-console.log(process.env);
+const envPassword =
+  readPasswordFromDotEnv() ||
+  process.env.password ||
+  process.env.POSTINSTALL_PASSWORD ||
+  process.env.ENV_ENCRYPTION_PASSWORD ||
+  process.env.DOTENV_ENCRYPTION_PASSWORD;
+
+function getPassword(promptText) {
+  if (envPassword) {
+    console.log("Using password from environment variable.");
+    return Promise.resolve(envPassword);
+  }
+
+  return promptPassword(promptText);
+}
 
 // Helper function to prompt for a password
 function promptPassword(question) {
@@ -76,12 +122,12 @@ async function decryptFile(password) {
   if (envExists && !envEncExists) {
     // If .env exists but .env.enc does not, encrypt .env
     console.log(".env exists but .env.enc does not. Encrypting .env...");
-    const password = await promptPassword("Enter password to encrypt .env: ");
+    const password = await getPassword("Enter password to encrypt .env: ");
     await encryptFile(password);
   } else if (envEncExists && !envExists) {
     // If .env.enc exists but .env does not, decrypt .env.enc
     console.log(".env.enc exists but .env does not. Decrypting .env.enc...");
-    const password = await promptPassword(
+    const password = await getPassword(
       "Enter password to decrypt .env.enc: "
     );
     try {

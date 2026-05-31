@@ -11,6 +11,10 @@ const contactform = {
     message: "Message",
     sendMessage: "Send Message",
     sent: "Message Sent!",
+    requiredField: "This field is required",
+    invalidEmail: "Enter a valid email",
+    submitError: "Something went wrong. Please try again.",
+    missingConfig: "Contact form is not configured.",
   },
   es: {
     title: "Contacto",
@@ -19,6 +23,10 @@ const contactform = {
     message: "Mensaje",
     sendMessage: "Manda Correo",
     sent: "Enviado",
+    requiredField: "Este campo es obligatorio",
+    invalidEmail: "Ingresa un correo valido",
+    submitError: "Algo salio mal. Intenta nuevamente.",
+    missingConfig: "El formulario de contacto no esta configurado.",
   },
 };
 const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP;
@@ -26,29 +34,46 @@ const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP;
 export default function Contact({ locale }) {
   const form = contactform[locale];
   const [response, setResponse] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    reset,
+    formState: { isSubmitting, errors },
   } = useForm();
 
   async function submitForm(data) {
     const EMAIL_URL = process.env.NEXT_PUBLIC_EMAIL_URL;
 
+    if (!EMAIL_URL) {
+      setSubmitError(form.missingConfig);
+      return;
+    }
+
+    setSubmitError("");
+
     try {
       const formData = new FormData();
       formData.append("_wpcf7", "327"); // Replace with your CF7 form ID
       formData.append("_wpcf7_unit_tag", "d409a3d"); // Replace with your CF7 unit tag
-      formData.append("yname", data["your-name"]);
-      formData.append("yemail", data["your-email"]);
-      formData.append("ymessage", data["your-message"]);
+      formData.append("yname", data["your-name"].trim());
+      formData.append("yemail", data["your-email"].trim());
+      formData.append("ymessage", data["your-message"].trim());
 
-      await axios.post(EMAIL_URL, formData);
+      const result = await axios.post(EMAIL_URL, formData, {
+        timeout: 10000,
+      });
+
+      if (result?.data?.status && result.data.status !== "mail_sent") {
+        throw new Error("mail_not_sent");
+      }
+
       setResponse(true);
+      reset();
     } catch (error) {
       console.error("Form submission error: ", error);
-      alert("Something went wrong. Please try again.");
+      setSubmitError(form.submitError);
     }
   }
 
@@ -70,37 +95,71 @@ export default function Contact({ locale }) {
                 <label className="block mb-6">
                   <span>{form.name}</span>
                   <input
-                    {...register("your-name", { required: true, minLength: 3 })}
+                    {...register("your-name", {
+                      required: form.requiredField,
+                      minLength: {
+                        value: 3,
+                        message: form.requiredField,
+                      },
+                    })}
                     type="text"
                     className="block w-full mt-1 p-2 px-3 border-gray-300 rounded-md shadow-sm dark:text-white dark:bg-darkGrayishBlue"
                     placeholder="Pedro RiosLibres"
+                    aria-invalid={!!errors?.["your-name"]}
                   />
+                  {errors?.["your-name"] ? (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors["your-name"].message}
+                    </p>
+                  ) : null}
                 </label>
                 <label className="block mb-6">
                   <span>{form.email}</span>
                   <input
                     {...register("your-email", {
-                      required: true,
-                      minLength: 5,
+                      required: form.requiredField,
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: form.invalidEmail,
+                      },
                     })}
                     type="email"
                     className="block w-full mt-1 p-2 px-3 border-gray-300 rounded-md shadow-sm dark:text-white dark:bg-darkGrayishBlue"
                     placeholder="juan.pedro@gmail.com"
+                    aria-invalid={!!errors?.["your-email"]}
                   />
+                  {errors?.["your-email"] ? (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors["your-email"].message}
+                    </p>
+                  ) : null}
                 </label>
                 <label className="block mb-6">
                   <span>{form.message}</span>
                   <textarea
                     {...register("your-message", {
-                      required: true,
-                      minLength: 5,
+                      required: form.requiredField,
+                      minLength: {
+                        value: 5,
+                        message: form.requiredField,
+                      },
                     })}
                     rows="3"
                     className="block w-full mt-1 p-2 px-3 border-gray-300 rounded-md shadow-sm dark:text-white dark:bg-darkGrayishBlue"
                     placeholder="Cuenta nos que estas pensando..."
+                    aria-invalid={!!errors?.["your-message"]}
                   ></textarea>
+                  {errors?.["your-message"] ? (
+                    <p className="mt-1 text-sm text-red-600">
+                      {errors["your-message"].message}
+                    </p>
+                  ) : null}
                 </label>
                 <div className="mb-2">
+                  {submitError ? (
+                    <p className="mb-3 text-sm text-red-600">{submitError}</p>
+                  ) : null}
+
                   <button
                     disabled={isSubmitting}
                     type="submit"
