@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { tinaField, useTina } from "tinacms/dist/react";
 import { Block } from "./Blockz";
 import Heading from "./Heading";
@@ -30,9 +31,11 @@ export default function Somos({ data }) {
         {/* Image Section */}
         <div className="lg:w-1/2 flex justify-center lg:justify-end my-4">
           <div className="w-full max-w-sm md:max-w-md lg:max-w-full h-80 lg:h-auto overflow-hidden">
-            <img
+            <Image
               src={data.pagez.somosImgSrc}
               alt="Somos PuescoFest"
+              width={1200}
+              height={900}
               className="w-full h-full object-cover"
               data-tina-field={tinaField(data.pagez, "somosImgSrc")}
             />
