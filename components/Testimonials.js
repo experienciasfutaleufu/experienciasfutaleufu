@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { tinaField } from "tinacms/dist/react";
 
 const Testimonials = ({ props, locale }) => {
@@ -32,9 +33,11 @@ const Testimonials = ({ props, locale }) => {
           className="relative max-w-3xl mx-auto"
           data-tina-field={tinaField(testimonials[currentIndex], "name")}
         >
-          <img
+          <Image
             src={testimonials[currentIndex].image}
             alt={testimonials[currentIndex].name}
+            width={256}
+            height={256}
             className="w-64 h-64 mx-auto rounded-full border-4 border-blue-500"
           />
           <blockquote className="text-lg italic text-gray-700 dark:text-gray-300 mt-4">

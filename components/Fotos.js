@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { client } from "../tina/__generated__/client";
 import Heading from "./Heading";
@@ -17,8 +18,10 @@ export default function Fotos({ props }) {
           {fotos?.map &&
             fotos.map((foto, index) => (
               <div className="h-full w-full" key={`divf${index}`}>
-                <img
+                <Image
                   src={foto.imgSrc}
+                  width={1200}
+                  height={800}
                   data-te-img={foto.imgSrc}
                   alt={foto.name}
                   key={`fotos${`index`}`}
