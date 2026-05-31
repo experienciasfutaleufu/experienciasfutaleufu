@@ -7,7 +7,7 @@ export default function Document() {
     <Html lang="es">
       <Head>
         <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+          href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=optional"
           rel="stylesheet"
         />
 

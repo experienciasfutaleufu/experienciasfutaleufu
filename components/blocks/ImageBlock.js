@@ -3,7 +3,11 @@ export const ImageBlock = ({ data }) => {
   return (
     <>
       {data.imgSrc && (
-        <img src={data.imgSrc} className=" mx-auto fotoImageBlock" />
+        <img
+          src={data.imgSrc}
+          alt={data.alt || data.title || ""}
+          className=" mx-auto fotoImageBlock"
+        />
       )}
     </>
   );
